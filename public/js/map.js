@@ -1,20 +1,15 @@
 
-mapboxgl.accessToken = mapToken;                     
-const map = new mapboxgl.Map({
-  container: "map", // container ID
-  // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
-  style: "mapbox://styles/mapbox/streets-v12",       
- center: listing.geometry.coordinates,
-// center:[77.209,28.6139],              
-  zoom: 10,                                           
-});
-console.log(listing.geometry.coordinates)
-const marker = new mapboxgl.Marker({color:"red"})
-    .setLngLat(listing.geometry.coordinates)
-    .setPopup(
-        new mapboxgl.Popup({offset:25}).setHTML(
-            `<h4>${listing.title}</h4><p>Exact location will be provided after booking</p>`
-        )
-    )
-    .addTo(map);
 
+
+var map = new maplibregl.Map({
+  container: 'map',
+  style: 'https://api.maptiler.com/maps/streets/style.json?key=2tOsR36f6L1ZrLKWUy8q', // stylesheet location
+  center: coordinates, // starting position [lng, lat]
+  zoom: 8// starting zoom
+});
+
+const marker = new maplibregl.Marker({color: "red"})
+        .setLngLat(coordinates)
+        .setPopup(new maplibregl.Popup({offset: 25})
+        .setHTML(`<h4>${locate}</h4><p>Exact location provided after booking</p>`))
+        .addTo(map);

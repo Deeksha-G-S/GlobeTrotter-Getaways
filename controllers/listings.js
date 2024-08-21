@@ -4,8 +4,21 @@ const mapToken = process.env.MAP_TOKEN;
 const geocodingClient = mbxGeocoding({ accessToken: mapToken });
 
 module.exports.index = async (req, res,next) => {
+  const filterList = [
+    {icon: "fa-solid fa-fire", text: "Trending"},
+    {icon: "fa-solid fa-bed", text: "Rooms"},
+    {icon: "fa-solid fa-mountain-city", text: "Iconic Cities"},
+    {icon: "fa-solid fa-mountain", text: "Mountains"},
+    {icon: "fa-brands fa-fort-awesome", text: "Castles"},
+    {icon: "fa-solid fa-umbrella-beach", text: "Beach"},
+    {icon: "fa-solid fa-campground", text: "Camping"},
+    {icon: "fa-solid fa-cow", text: "Farms"},
+    {icon: "fa-solid fa-igloo", text: "Arctic"},
+    {icon: "fa-solid fa-person-swimming", text: "Amazing Pools"},
+  
+];
   const allListings=await Listing.find({});
-  res.render("listings/index.ejs",{allListings});
+  res.render("listings/index.ejs",{allListings,filterList});
 };
 
 module.exports.new = (req,res)=>{

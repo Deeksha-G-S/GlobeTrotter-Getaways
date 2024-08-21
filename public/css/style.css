@@ -1,77 +1,106 @@
 body{
-    font-family: 'Plus Jakarta Sans', sans-serif !important;
-    display:flex;
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+    display: flex;
     flex-direction: column;
     min-height: 100vh;
 }
 
 .container{
-    flex:1;
+    flex: 1;
 }
 
-/* navbar */
 .navbar{
     height: 5rem;
     background-color: white;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.25);
 }
 
-.fa-compass{
-    color:#fe424d;
-    font-size: 2rem;
+
+#filters{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+}
+.filters{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.filter{
+    text-align: center;
+    margin-right: 2rem;
+    margin-top: 1.5rem;
+    opacity: 0.7;
+}
+.filter:hover{
+    color: #fe424d !important;
+    opacity: 1;
+    cursor: pointer;
+}
+.filter p{
+    font-size: 0.8rem;
 }
 
-.nav-link{
-    color:#222222 !important;
+.tax-toggle{
+    border: 2px solid #676767;
+    padding: 0.6rem 0.6rem;
+    border-radius: 1rem;
+    font-weight: 500;
+    margin-right: 5rem;
+    font-size: 1rem;
 }
 
-/* footer */
+
 .f-info-links a{
     text-decoration: none;
-    color:#222222;
+    color: #222222;
 }
-
 .f-info-links a:hover{
     text-decoration: underline;
 }
-
-.f-info-links,
- .f-info-socials,
- .f-info-brand{
-    width:100%;
-   display: flex;
-   align-items: center;
-   justify-content: center;
+.f-info-links, .f-info-socials{
+    width: 100%;
 }
-
-
+.f-info-socials a{
+    text-decoration: none;
+    color: #222222;
+}
 .f-info-socials i{
-    margin-right:1rem;
     font-size: 1.2rem;
+    margin-right: 0.8rem;
 }
-
+.f-info-socials i:hover{
+    cursor: pointer;
+    color: #fe424d;
+}
 .f-info{
     text-align: center;
-    height:8rem;
+    height : 8rem;
     background-color: #ebebeb;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    align-items: space-evenly;
+    align-items: center;
 }
 
-/* styling for cards */
+
+/* Cards */
 .listing-card{
-    border: none;
+    border: none !important;
     margin-bottom: 2rem;
 }
 
+
 .card-img-top{
     border-radius: 1rem !important;
-    width:100% !important;
-    object-fit: cover;
+    width: 100% !important;
+    object-fit: cover !important;
+    height: 20rem;
 }
+
 .card-body{
-    padding:0 !important;
+    padding: 0 !important;
 }
 
 .card-text p{
@@ -79,46 +108,121 @@ body{
 }
 
 .listing-link{
-    text-decoration: none;
+    text-decoration: none !important;
 }
 
-/* card effect */
+/* Card-Effect */
 .card-img-overlay{
     opacity: 0;
 }
-
 .card-img-overlay:hover{
-    opacity: 0.2;
-    background-color: white;
+    opacity: 0.1;
+    background-color: rgb(255, 255, 255);
 }
 
-/* New page */
+/* New Page */
 .add-btn{
     background-color: #fe424d !important;
+    color: white !important;
+    border: none !important;
+   
+}
+
+/* Edit Page */
+.edit-btn{
+    background-color: #fe424d !important;
+    color: white !important;
     border: none !important;
 }
 
-/* Edit page */
-.edit-btn{
-    background-color: #fe424d !important;
-    border: none !important;
-}
-/* Show page */
+
+/* Show Page */
 .show-img{
-    height:30vh;
+    height: 30vh;
+    object-fit: cover;
+
+}
+
+.show-card{
+    padding-inline: 0;
 }
 
 .btns{
     display: flex;
 }
 
-.show-card{
-    padding-left: 0;
-    padding-right: 0;
+
+/* MAP */
+#map {
+    height: 300px;
+    width: 600px;
+    border-radius: 30px;
 }
 
-/* Map */
-#map {
-    height: 400px;
-    width: 80vh;
+.sign-btn{
+    font-size: 0.8rem !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    border-radius: 4px;
+    margin-right: 10px;
+    padding: 2px 12px !important;
+}
+
+.signup-btn{
+    background-color: #fe424d !important;
+    color: white !important;
+}
+
+.login-btn{
+    border: 1px solid #fe424d !important;
+    color: #fe424d !important;
+}
+
+
+
+
+/* Scroll Bar */
+::-webkit-scrollbar {
+    width: 7px;
   }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 7px;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #e63337;
+    border-radius: 7px;
+  }
+
+
+
+
+  @media screen and (max-width: 767px) {
+    
+    #filters {
+        flex-direction: column;
+        justify-content: center;
+        overflow-x: scroll;
+    }
+    #filters::-webkit-scrollbar{
+        display: none;
+    }
+    .tax-toggle{
+        margin-right: 0;
+        /* margin-top: px; */
+    }
+    .card-img-top{
+        width: 80%;
+        /* height: 15rem; */
+    }
+    #map{
+        height: 200px;
+        width: 300px;
+    }
+    
+}
