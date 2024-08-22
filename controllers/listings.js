@@ -39,19 +39,27 @@ module.exports.show = async (req, res) => {
 };
 
 module.exports.create = async (req, res, next) => {
-  let coordinate = await geocodingClient
-    .forwardGeocode({
-      query: `${req.body.listing.location},${req.body.listing.country}`,
-      limit: 2,
-    })
-    .send();
+  // let coordinate = await geocodingClient
+  //   .forwardGeocode({
+  //     query: `${req.body.listing.location},${req.body.listing.country}`,
+  //     limit: 2,
+  //   })
+  //   .send();
+  
+  let {location} = req.body.listing;
+
+    // Get Coordinates
+    const data = await fetch("https://geocode.maps.co/search?q="+location.split(", ").join("+")+"&api_key=668cdc66180b5425798827zyxafe37a");
+    const json = await data.json();
+    let {lon, lat} = json[0];
+
   let url = req.file.path;
   let filename = req.file.filename;
   let listing = req.body.listing;
   const newListing=new Listing(listing);
         newListing.owner = req.user._id;
         newListing.image = { url, filename };
-        newListing.geometry = coordinate.body.features[0].geometry;
+        newListing.geometry = {type: 'Point', coordinates: [lon, lat]};
     await newListing.save();
     req.flash('success', 'Successfully created a new listing');
     res.redirect("/listings");
