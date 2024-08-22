@@ -1,6 +1,4 @@
 
-
-
 var map = new maplibregl.Map({
   container: 'map',
   style: 'https://api.maptiler.com/maps/streets/style.json?key=2tOsR36f6L1ZrLKWUy8q', // stylesheet location
